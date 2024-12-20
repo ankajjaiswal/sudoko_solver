@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: #333;
+    background: linear-gradient(135deg, #e0f7fa, #0288d1);
+    animation: gradient-animation 6s infinite alternate;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background: linear-gradient(135deg, #e0f7fa, #0288d1);
+    }
+    100% {
+        background: linear-gradient(135deg, #82b1ff, #004d9f);
+    }
+}
+
+h1 {
+    margin: 20px 0;
+    color: #ffffff;
+    font-size: 2.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    animation: fade-in 2s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Alert Messages */
+#alert-msg, #invalid-input-msg {
+    margin: 10px auto;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ff6f61;
+    animation: slide-in 0.5s ease-in-out;
+}
+
+@keyframes slide-in {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Sudoku Grid */
+#content-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    animation: scale-up 0.8s ease-in-out;
+}
+
+@keyframes scale-up {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+table#grid {
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+td {
+    border: 1px solid #ccc;
+    padding: 0;
+}
+
+td input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #0056b3;
+    transition: all 0.3s ease;
+}
+
+td input:focus {
+    background-color: #e3f2fd;
+    box-shadow: 0 0 5px #0288d1;
+}
+
+td input.read-only {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+.top-row {
+    border-top: 2px solid #0288d1;
+}
+
+.bottom-row {
+    border-bottom: 2px solid #0288d1;
+}
+
+.col-start {
+    border-left: 2px solid #0288d1;
+}
+
+.col-end {
+    border-right: 2px solid #0288d1;
+}
+
+/* Solve Button */
+button#submit {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fade-in 1.5s ease-in-out;
+}
+
+button#submit:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button#submit:active {
+    transform: scale(0.95);
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    td input {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    button#submit {
+        width: 80%;
+        font-size: 0.9rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}
