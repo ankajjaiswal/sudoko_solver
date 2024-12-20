@@ -25,7 +25,7 @@ A simple and interactive **9x9 Sudoku Solver** web application that uses the **b
 
 ## **Demo**
 
-Check out the live demo: [Your GitHub Pages Link Here]
+Check out the live demo: https://sudokor.vercel.app/
 
 
 ## **How to Use**
