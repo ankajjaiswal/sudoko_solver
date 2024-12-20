@@ -1,7 +1,7 @@
 const submit = document.getElementById('submit');
 const invalidInputMsg = document.getElementById('invalid-input-msg');
+const alertMsg = document.getElementById('alert-msg');
 
-// Event listener for the "Solve" button
 submit.addEventListener('click', handleSolve);
 
 function handleSolve() {
@@ -15,22 +15,19 @@ function handleSolve() {
             invalidInputMsg.style.display = 'block';
             setTimeout(() => {
                 invalidInputMsg.style.display = 'none';
-            }, 3000); // Hide after 3 seconds
+            }, 3000);
             return null;
         }
     });
 
     if (A.includes(null)) return;
 
-    // Hide previous messages
     invalidInputMsg.style.display = 'none';
     alertMsg.style.display = 'none';
 
-    // Convert 1D array to 2D board
     const board = [];
     while (A.length) board.push(A.splice(0, 9));
 
-    // Validate and solve
     if (isBoardEmpty(board)) {
         alertMsg.style.display = 'block';
         setTimeout(() => {
@@ -51,7 +48,6 @@ function isBoardEmpty(board) {
 }
 
 function isSafe(board, row, col, value) {
-    // Check row, column, and subgrid
     const sqrt = Math.sqrt(board.length);
     const boxRowStart = row - (row % sqrt);
     const boxColStart = col - (col % sqrt);
@@ -71,14 +67,14 @@ function solveSudoku(board, n) {
                     if (isSafe(board, row, col, num)) {
                         board[row][col] = num;
                         if (solveSudoku(board, n)) return true;
-                        board[row][col] = 0; // Backtrack
+                        board[row][col] = 0; 
                     }
                 }
-                return false; // Trigger backtracking
+                return false; 
             }
         }
     }
-    return true; // Solved
+    return true;
 }
 
 function displaySolution(board, inputs) {
@@ -88,6 +84,6 @@ function displaySolution(board, inputs) {
         inputs[index].classList.add('animated');
         setTimeout(() => {
             inputs[index].classList.remove('animated');
-        }, 1000); // Animation duration
+        }, 1000); 
     });
 }
