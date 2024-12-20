@@ -2,7 +2,6 @@
 
 A simple and interactive **9x9 Sudoku Solver** web application that uses the **backtracking algorithm** to solve Sudoku puzzles. This project is built using **HTML**, **CSS**, and **JavaScript** and features a user-friendly interface with gradient backgrounds, animations, and responsive design.
 
----
 
 ## **Features**
 
@@ -16,7 +15,6 @@ A simple and interactive **9x9 Sudoku Solver** web application that uses the **b
   - Alerts if no input is provided.
   - Displays messages for invalid or unsolvable puzzles.
 
----
 
 ## **Technologies Used**
 
@@ -24,13 +22,11 @@ A simple and interactive **9x9 Sudoku Solver** web application that uses the **b
 - **CSS**: For styling and animations.
 - **JavaScript**: For puzzle-solving logic and interactivity.
 
----
 
 ## **Demo**
 
 Check out the live demo: [Your GitHub Pages Link Here]
 
----
 
 ## **How to Use**
 
