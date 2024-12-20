@@ -1,6 +1,5 @@
 const submit = document.getElementById('submit');
 const invalidInputMsg = document.getElementById('invalid-input-msg');
-const alertMsg = document.getElementById('alert-msg');
 
 // Event listener for the "Solve" button
 submit.addEventListener('click', handleSolve);
