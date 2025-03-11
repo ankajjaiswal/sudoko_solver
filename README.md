@@ -1,35 +1,85 @@
 # Sudoku Solver
 
-A simple and interactive **9x9 Sudoku Solver** web application that uses the **backtracking algorithm** to solve Sudoku puzzles. This project is built using **HTML**, **CSS**, and **JavaScript** and features a user-friendly interface with gradient backgrounds, animations, and responsive design.
+A modern, interactive Sudoku puzzle solver with multiple features and a beautiful UI. Play Sudoku, get hints, and solve puzzles with different difficulty levels.
 
+## Features
 
-## **Features**
+- 🎮 **Multiple Difficulty Levels**
+  - Easy (30 empty squares)
+  - Medium (40 empty squares)
+  - Hard (50 empty squares)
 
-- **Input Validation**: Ensures users can only enter numbers between 1 and 9.
-- **Solves Sudoku Puzzles**: Implements the backtracking algorithm to solve valid Sudoku puzzles.
-- **Dynamic Styling**:
-  - Gradient backgrounds with smooth animations.
-  - Highlighted cells for better visual feedback.
-- **Responsive Design**: Optimized for both desktop and mobile devices.
-- **Error Handling**:
-  - Alerts if no input is provided.
-  - Displays messages for invalid or unsolvable puzzles.
+- 🌓 **Dark/Light Theme**
+  - Toggle between dark and light modes
+  - Theme preference is saved automatically
 
+- ⏱️ **Game Statistics**
+  - Timer to track solving time
+  - Best time tracking
+  - Number of puzzles solved
 
-## **Technologies Used**
+- 💡 **Helpful Features**
+  - Hint system for when you're stuck
+  - Automatic solution validation
+  - Clear board option
+  - Auto-solve functionality
 
-- **HTML**: For the structure of the application.
-- **CSS**: For styling and animations.
-- **JavaScript**: For puzzle-solving logic and interactivity.
+- ⌨️ **Keyboard Controls**
+  - Arrow keys for navigation
+  - Numbers 1-9 for input
+  - 'H' key for hints
+  - Delete/Backspace to clear cells
 
+## How to Play
 
-## **Demo**
+1. **Start a New Game**
+   - Click the "New Game" button
+   - Select your preferred difficulty level
+   - Start filling in numbers!
 
-Check out the live demo: https://sudokor.vercel.app/
+2. **Navigation**
+   - Use arrow keys to move between cells
+   - Click on any cell to select it
+   - Type numbers 1-9 to fill cells
 
+3. **Getting Help**
+   - Press 'H' or click the "Hint" button for a hint
+   - Use "Clear" to reset your inputs
+   - Click "Solve" to see the complete solution
 
-## **How to Use**
+4. **Validation**
+   - Invalid inputs are highlighted in red
+   - Completed puzzles are automatically checked
+   - Correct solutions are celebrated!
 
-1. Clone or download the repository:
+## Technical Details
+
+- Built with vanilla JavaScript, HTML5, and CSS3
+- Responsive design for mobile and desktop
+- Local storage for saving statistics and preferences
+- Efficient Sudoku generation and solving algorithms
+
+## Installation
+
+1. Clone the repository:
    ```bash
-   git clone https://github.com/ankajjaiswal/sudoku_solver.git
+   git clone https://github.com/ankajjaiswal/sudoko_solver.git
+   ```
+
+2. Open `index.html` in your web browser
+
+No additional dependencies or setup required!
+
+## Contributing
+
+Feel free to submit issues, fork the repository, and create pull requests for any improvements.
+
+## Author
+
+- **Ankaj Jaiswal**
+  - [GitHub](https://github.com/ankajjaiswal)
+  - [LinkedIn](https://linkedin.com/in/ankaj-jaiswal)
+
+## License
+
+Copyright © 2024 Ankaj Jaiswal. All rights reserved.
