@@ -1,48 +1,291 @@
+:root {
+    --primary-color: #0288d1;
+    --secondary-color: #0056b3;
+    --background-start: #e0f7fa;
+    --background-end: #0288d1;
+    --text-color: #333;
+    --grid-background: rgba(255, 255, 255, 0.8);
+    --input-color: #0056b3;
+    --input-background: transparent;
+    --input-focus: #e3f2fd;
+    --button-gradient-start: #007bff;
+    --button-gradient-end: #0056b3;
+    --footer-gradient-start: #004d9f;
+    --footer-gradient-end: #007bff;
+}
+
+[data-theme="dark"] {
+    --primary-color: #64b5f6;
+    --secondary-color: #1976d2;
+    --background-start: #1a237e;
+    --background-end: #000051;
+    --text-color: #ffffff;
+    --grid-background: rgba(255, 255, 255, 0.1);
+    --input-color: #ffffff;
+    --input-background: rgba(255, 255, 255, 0.05);
+    --input-focus: rgba(255, 255, 255, 0.2);
+    --button-gradient-start: #1976d2;
+    --button-gradient-end: #0d47a1;
+    --footer-gradient-start: #000051;
+    --footer-gradient-end: #1a237e;
+}
+
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
     text-align: center;
-    color: #333;
-    background: linear-gradient(135deg, #e0f7fa, #0288d1);
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--background-start), var(--background-end));
     animation: gradient-animation 6s infinite alternate;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-@keyframes gradient-animation {
-    0% {
-        background: linear-gradient(135deg, #e0f7fa, #0288d1);
-    }
-    100% {
-        background: linear-gradient(135deg, #82b1ff, #004d9f);
-    }
+.game-container {
+    flex: 1;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h1 {
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+#theme-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Controls Section */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 20px 0;
-    color: #ffffff;
-    font-size: 2.5rem;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-    animation: fade-in 2s ease-in-out;
+    padding: 15px;
+    background: var(--grid-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Fade-in Animation */
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.difficulty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-/* Alert Messages */
-#alert-msg, #invalid-input-msg {
+.difficulty label {
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.difficulty select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 2px solid var(--primary-color);
+    background: var(--input-background);
+    color: var(--text-color);
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+}
+
+.difficulty select:hover {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.difficulty select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+.difficulty select option {
+    background: var(--input-background);
+    color: var(--text-color);
+    padding: 8px;
+}
+
+/* Dark theme specific styles */
+[data-theme="dark"] .difficulty select {
+    background-color: var(--input-background);
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .difficulty select option {
+    background-color: var(--background-start);
+    color: var(--text-color);
+}
+
+.timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.stats span {
+    margin: 0 10px;
+    color: var(--text-color);
+}
+
+/* Messages */
+.messages {
+    min-height: 40px;
+}
+
+.messages p {
     margin: 10px auto;
     font-size: 1rem;
     font-weight: bold;
     color: #ff6f61;
     animation: slide-in 0.5s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn i {
+    font-size: 1.1rem;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Help Text */
+.help-text {
+    margin: 20px 0;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Sudoku Grid */
+#content-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    animation: scale-up 0.8s ease-in-out;
+}
+
+table#grid {
+    border-collapse: collapse;
+    background: var(--grid-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+td {
+    border: 1px solid var(--primary-color);
+    padding: 0;
+}
+
+td input {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    background: var(--input-background);
+    color: var(--input-color);
+    transition: all 0.3s ease;
+}
+
+td input:focus {
+    background: var(--input-focus);
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+td input.read-only {
+    background: var(--input-background);
+    color: var(--secondary-color);
+    font-weight: 900;
+}
+
+td input.invalid {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff6b6b;
+}
+
+td input.highlighted {
+    background: rgba(255, 235, 59, 0.2);
+}
+
+.top-row { border-top: 2px solid var(--primary-color); }
+.bottom-row { border-bottom: 2px solid var(--primary-color); }
+.col-start { border-left: 2px solid var(--primary-color); }
+.col-end { border-right: 2px solid var(--primary-color); }
+
+/* Animations */
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes slide-in {
@@ -56,15 +299,6 @@ h1 {
     }
 }
 
-/* Sudoku Grid */
-#content-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    animation: scale-up 0.8s ease-in-out;
-}
-
 @keyframes scale-up {
     from {
         transform: scale(0.9);
@@ -76,116 +310,16 @@ h1 {
     }
 }
 
-table#grid {
-    border-collapse: collapse;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-td {
-    border: 1px solid #ccc;
-    padding: 0;
-}
-
-td input {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: #0056b3;
-    transition: all 0.3s ease;
-}
-
-td input:focus {
-    background-color: #e3f2fd;
-    box-shadow: 0 0 5px #0288d1;
-}
-
-td input.read-only {
-    background-color: #e9ecef;
-    color: #495057;
-}
-
-.top-row {
-    border-top: 2px solid #0288d1;
-}
-
-.bottom-row {
-    border-bottom: 2px solid #0288d1;
-}
-
-.col-start {
-    border-left: 2px solid #0288d1;
-}
-
-.col-end {
-    border-right: 2px solid #0288d1;
-}
-
-/* Solve Button */
-button#submit {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-    background: linear-gradient(135deg, #007bff, #0056b3);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fade-in 1.5s ease-in-out;
-}
-
-button#submit:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-button#submit:active {
-    transform: scale(0.95);
-    background: linear-gradient(135deg, #0056b3, #003f7f);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    td input {
-        width: 30px;
-        height: 30px;
-        font-size: 1rem;
-    }
-
-    button#submit {
-        width: 80%;
-        font-size: 0.9rem;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-}
+/* Footer */
 footer {
-    background: linear-gradient(135deg, #004d9f, #007bff);
+    background: linear-gradient(135deg, var(--footer-gradient-start), var(--footer-gradient-end));
     color: #fff;
     padding: 20px 0;
-    text-align: center;
-    font-size: 1rem;
+    margin-top: auto;
 }
 
 .footer-content {
     margin-bottom: 10px;
-}
-
-.footer-content p {
-    font-size: 1.2rem;
-    margin: 0;
 }
 
 .social-icons {
@@ -207,6 +341,43 @@ footer {
 
 .footer-note {
     font-size: 0.9rem;
-    margin-top: 10px;
+    margin: 10px 0 0;
     color: rgba(255, 255, 255, 0.7);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    td input {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+    }
 }
