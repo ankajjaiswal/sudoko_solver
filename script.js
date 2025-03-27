@@ -181,14 +181,15 @@ function handleInput(e) {
     const input = e.target;
     const value = input.value;
 
-    if (value && (value < 1 || value > 9)) {
+    // Ensure the input is a number between 1 and 9
+    if (!/^[1-9]$/.test(value)) {
         invalidInputMsg.style.display = 'block';
         input.classList.add('invalid');
         setTimeout(() => {
             invalidInputMsg.style.display = 'none';
             input.classList.remove('invalid');
         }, 2000);
-        input.value = '';
+        input.value = ''; // Clear invalid input
         return;
     }
 
