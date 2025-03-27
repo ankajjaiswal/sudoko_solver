@@ -179,7 +179,7 @@ function startNewGame() {
 
 function handleInput(e) {
     const input = e.target;
-    const value = input.value;
+    const value = input.value.trim(); // Trim whitespace to avoid invalid input
 
     // Ensure the input is a number between 1 and 9
     if (!/^[1-9]$/.test(value)) {
@@ -192,6 +192,8 @@ function handleInput(e) {
         input.value = ''; // Clear invalid input
         return;
     }
+
+    input.value = value; // Ensure only valid input is retained
 
     if (!isGameActive && value) {
         startTimer();
